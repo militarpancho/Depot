@@ -49,7 +49,26 @@ class ProductsControllerTest < ActionController::TestCase
     assert_difference('Product.count', -1) do
       delete :destroy, id: @product
     end
-
     assert_redirected_to products_path
   end
+
+#test "should only have one image" do
+#     get :index
+#     assert_response :success
+#     assert_select '.list_image' do |elements|
+#     elements.each do |element|
+#         assert_select element,"img",maximun: 1
+#     end
+#     end
+# end
+
+test "should be three elements" do
+    get :index
+    assert_select '.list_actions' do |elements|
+        elements.each do |element|
+            assert_select element,"a",3
+        end
+    end
+end
+
 end
