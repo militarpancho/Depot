@@ -52,23 +52,22 @@ class ProductsControllerTest < ActionController::TestCase
     assert_redirected_to products_path
   end
 
-#test "should only have one image" do
-#     get :index
-#     assert_response :success
-#     assert_select '.list_image' do |elements|
-#     elements.each do |element|
-#         assert_select element,"img",maximun: 1
-#     end
-#     end
-# end
-
-test "should be three elements" do
+  test "should only have one image" do
     get :index
-    assert_select '.list_actions' do |elements|
-        elements.each do |element|
-            assert_select element,"a",3
-        end
+    assert_select "tr" do |products|
+      products.each do |product|
+        assert_select product, "td:first img", 1
+      end
     end
-end
+  end
+
+  test "should have a description" do
+    get :index
+    assert_select "tr" do |elements|
+      products.each do |element|
+        assert_select element, ".list_description", 1
+      end
+    end
+  end      
 
 end
