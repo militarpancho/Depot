@@ -57,6 +57,10 @@ en:
 
 #START:checkout
   orders:
+    payment_types:
+      check:          "Check"
+      credit_card:    "Credit Card"
+      purchase_order: "Purchase Order"
     new:
       legend:       "Please Enter Your Details"
     form:

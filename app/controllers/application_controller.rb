@@ -26,8 +26,12 @@ class ApplicationController < ActionController::Base
         if request.format == Mime::HTML
           unless User.find_by(id: session[:user_id])
             if User.count.zero?
-              flash[:notice] = "Create an administrator account"
-              redirect_to :controller => 'admin', :action => 'login'
+               if request.path_parameters[:controller] == 'users' and request.path_parameters[:action] == 'create'
+                #do nothing. let the users controller verify that everything is correct 
+               elsif !(request.path_parameters[:controller] == 'users' and request.path_parameters[:action] == 'new')
+                flash[:notice] = "Please create Admin User" 
+                redirect_to :controller => 'users' , :action => 'new'
+               end                 
             else  
               redirect_to login_url, notice: "Please log in"
             end  

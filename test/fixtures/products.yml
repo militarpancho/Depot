@@ -5,12 +5,14 @@ one:
   description: MyText
   image_url: MyString
   price: 9.99
+  locale: :en
 
 two:
   title: MyString
   description: MyText
   image_url: MyString
   price: 9.99
+  locale: :en
 
 #START:ruby
 

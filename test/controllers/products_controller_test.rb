@@ -7,7 +7,8 @@ class ProductsControllerTest < ActionController::TestCase
     title:     'Lorem Ipsum',
     description: 'Wibbles are fun!',
     image_url:   'lorem.jpg',
-    price:      19.95
+    price:      19.95,
+    locale:     :en
     }
   end
 
@@ -54,11 +55,12 @@ class ProductsControllerTest < ActionController::TestCase
 
   test "should only have one image" do
     get :index
-    assert_select "tr" do |products|
-      products.each do |product|
-        assert_select product, "td:first img", 1
+    
+      assert_select "tr" do |products|
+        products.each do |product|
+          assert_select product, "td:first img", 1
+        end
       end
-    end
   end
 
   test "should have a description" do
