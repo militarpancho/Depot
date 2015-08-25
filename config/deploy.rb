@@ -13,7 +13,7 @@ set :rvm_ruby_string, '2.2.2'
 
 # file paths
 set :repository, "https://github.com/militarpancho/Depot.git" 
-set :deploy_to, "/home/manuel/depot"
+set :deploy_to, "/home/manuel/deploy/depot"
 
 # distribute your applications across servers (the instructions below put them
 # all on the same server, defined above as 'domain', adjust as necessary)
